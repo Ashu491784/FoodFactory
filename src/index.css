@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+canvas {
+  display: block;
+  margin: auto;
+  border: 2px solid #4f46e5;
+  background-color: #e0f2fe;
+}
