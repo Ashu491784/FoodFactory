@@ -61,11 +61,13 @@ const Dashboard  = () => {
         </p>
       </div>
       <div className="flex items-center space-x-4">
+      <Link to={"/Login"}>
         <button className="relative text-gray-500 hover:text-indigo-600 text-2xl transition-all duration-300 transform hover:scale-110 hover:rotate-12">
-          🔔
+          👤
           <span className="absolute -top-1 -right-1 h-3 w-3 rounded-full bg-red-500 animate-ping opacity-75"></span>
           <span className="absolute -top-1 -right-1 h-3 w-3 rounded-full bg-red-500"></span>
         </button>
+      </Link>  
       </div>
     </div>
 

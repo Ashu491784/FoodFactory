@@ -1,54 +1,112 @@
 import React, { useState } from 'react';
-import { FoodmakeFactory, FoodFctory } from '../components/FoodmakeFactory';
+import { FoodFactory } from '../components/FoodmakeFactory';
 import cartInstance from '../components/CardSingleton';
+import { ExtraCheese, ExtraSource, SpicyLavel, Largesize } from '../components/changefoodsDecorator';
 
 const FoodViewCard = () => {
   const [cartItems, setCartItems] = useState([]);
   const [total, setTotal] = useState(0);
+  const [selectedExtras, setSelectedExtras] = useState([]);
 
   const foodData = [
-    { name: 'Pizza', image: '🍕', price: 400 },
-    { name: 'Burger', image: '🍔', price: 250 },
-    { name: 'Hotdog', image: '🌭', price: 300 },
-    { name: 'Juice', image: '🥤', price: 150 },
+    FoodFactory.createFood("Pizza", "🍕", 1200),
+    FoodFactory.createFood("Burger", "🍔", 950),
+    FoodFactory.createFood("Hotdog", "🌭", 850),
+    FoodFactory.createFood("Juice", "🧃", 500),
   ];
 
-  const handleAdd = ({ name, image, price }) => {
-    const foodItem = FoodFctory.createFood(name, image, price);
-    cartInstance.addItem(foodItem);
-    setCartItems([...cartInstance.getItems()]);
-    setTotal(cartInstance.getTotal());
+  const toggleExtra = (extra) => {
+    setSelectedExtras(prev =>
+      prev.includes(extra) ? prev.filter(e => e !== extra) : [...prev, extra]
+    );
+  };
+
+  const applyExtras = (foodItem) => {
+    let decorated = foodItem;
+    selectedExtras.forEach(extra => {
+      switch (extra) {
+        case 'cheese':
+          decorated = new ExtraCheese(decorated);
+          break;
+        case 'sauce':
+          decorated = new ExtraSource(decorated);
+          break;
+        case 'spicy':
+          decorated = new SpicyLavel(decorated);
+          break;
+        case 'large':
+          decorated = new Largesize(decorated);
+          break;
+        default:
+          break;
+      }
+    });
+    return decorated;
+  };
+
+  const handleAdd = (foodItem) => {
+    const finalItem = applyExtras(foodItem);
+    cartInstance.addItem(finalItem);
+
+    const updatedItems = cartInstance.getItems();
+    setCartItems([...updatedItems]);
+
+    const newTotal = updatedItems.reduce((sum, item) => sum + item.getPrice(), 0);
+    setTotal(newTotal);
   };
 
   return (
     <div className="max-w-3xl mx-auto p-6 space-y-6">
       <h1 className="text-3xl font-bold text-center text-gray-800">🍽️ Order Your Food</h1>
 
+      {/* Extras selection */}
+      <div className="flex gap-4 flex-wrap justify-center">
+        <label className="flex items-center gap-1 cursor-pointer select-none">
+          <input type="checkbox" onChange={() => toggleExtra('cheese')} checked={selectedExtras.includes('cheese')} />
+          Extra Cheese (+150)
+        </label>
+        <label className="flex items-center gap-1 cursor-pointer select-none">
+          <input type="checkbox" onChange={() => toggleExtra('sauce')} checked={selectedExtras.includes('sauce')} />
+          Extra Sauce (+100)
+        </label>
+        <label className="flex items-center gap-1 cursor-pointer select-none">
+          <input type="checkbox" onChange={() => toggleExtra('spicy')} checked={selectedExtras.includes('spicy')} />
+          Spicy Level (+50)
+        </label>
+        <label className="flex items-center gap-1 cursor-pointer select-none">
+          <input type="checkbox" onChange={() => toggleExtra('large')} checked={selectedExtras.includes('large')} />
+          Large Size (+200)
+        </label>
+      </div>
+
+      {/* Food cards */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {foodData.map((item, i) => (
           <div
             key={i}
             onClick={() => handleAdd(item)}
-            className="cursor-pointer bg-white rounded-xl p-4 shadow hover:scale-105 transition"
+            className="cursor-pointer bg-white rounded-xl p-4 shadow hover:scale-105 transition transform duration-300"
+            title={`Click to add ${item.getName()} with selected extras`}
           >
-            <div className="text-4xl text-center">{item.image}</div>
-            <h3 className="text-lg font-semibold text-center mt-2">{item.name}</h3>
-            <p className="text-sm text-center text-gray-600">Rs.{item.price}</p>
+            <div className="text-4xl text-center">{item.getImage()}</div>
+            <h3 className="text-lg font-semibold text-center mt-2">{item.getName()}</h3>
+            <p className="text-sm text-center text-gray-600">Rs.{item.getPrice()}</p>
           </div>
         ))}
       </div>
 
+      {/* Cart and bill */}
       <div className="bg-white rounded-xl shadow-md p-5">
         <h2 className="text-2xl font-semibold mb-4 text-gray-800">🧾 Your Bill</h2>
 
         {cartItems.length === 0 ? (
           <p className="text-gray-500">No items in cart.</p>
         ) : (
-          <ul className="space-y-2 mb-4">
+          <ul>
             {cartItems.map((item, i) => (
               <li key={i} className="flex justify-between text-gray-700 border-b pb-1">
-                <span>{item.name}</span>
-                <span>Rs.{item.price}</span>
+                <span>{item.getInfo()}</span>
+                <span>Rs.{item.getPrice()}</span>
               </li>
             ))}
           </ul>

@@ -1,56 +1,54 @@
 import {FoodmakeFactory} from "./FoodmakeFactory";
-class FoodDecorate extends FoodmakeFactory{
-    constructor(FoodmakeFactory){
-        super();
-        this.foodmakeFactory = FoodmakeFactory;
-    }
 
-    getInfo(){
-        return `${this.FoodmakeFactory.getInfo()} | ${this.name} | ${this.price}`;
-    }
-    prepare(){
-        return this.FoodmakeFactory.prepare();
-    }
+class FoodDecorate extends FoodmakeFactory {
+  constructor(FoodmakeFactory) {
+    super(FoodmakeFactory.name, FoodmakeFactory.image, FoodmakeFactory.price);
+    this.FoodmakeFactory = FoodmakeFactory;
+  }
+
+  getPrice() {
+    return this.FoodmakeFactory.getPrice();
+  }
+
+  getInfo() {
+    return this.FoodmakeFactory.getInfo();
+  }
 }
 
-class ExtraCheese extends FoodDecorate{
-    getInfo(){
-        return this.FoodmakeFactory.getInfo() + " +Extracheese"
-    }
-    prepare(){
-        return this.FoodmakeFactory.prepare() + "add to Extracheese";
-    }
- }
+class ExtraCheese extends FoodDecorate {
+  getPrice() {
+    return this.FoodmakeFactory.getPrice() + 150;
+  }
+  getInfo() {
+    return this.FoodmakeFactory.getInfo() + " + Extra Cheese";
+  }
+}
 
- class ExtraSource extends FoodDecorate{
-    getInfo(){
-        return this.FoodmakeFactory.getInfo() + " +ExtraSource"
-    }
-    prepare(){
-        return this.FoodmakeFactory.prepare() + "add to ExtraSouce";
-    }
- }
+class ExtraSource extends FoodDecorate {
+  getPrice() {
+    return this.FoodmakeFactory.getPrice() + 100;
+  }
+  getInfo() {
+    return this.FoodmakeFactory.getInfo() + " + Extra Sauce";
+  }
+}
 
- class Largesize extends FoodDecorate{
-    getInfo(){
-        return this.FoodmakeFactory.getInfo().replace(/Rs\.(\d+)/, (match, p1) => {
-            const newPrice = parseInt(p1) * 2;
-            return `Rs. ${newPrice}`;
-        }) + ("Largesize");
-    }
-    prepare(){
-        return this.FoodmakeFactory.prepare() + "add to Largesize";
-    }
- }
+class SpicyLavel extends FoodDecorate {
+  getPrice() {
+    return this.FoodmakeFactory.getPrice() + 50;
+  }
+  getInfo() {
+    return this.FoodmakeFactory.getInfo() + " + Spicy Level";
+  }
+}
 
- class SpicyLavel extends FoodDecorate{
-    getInfo(){
-        return this.FoodmakeFactory.getInfo() + " +Spicy"
-    }
-    prepare(){
-        return this.FoodmakeFactory.prepare() + "add to SpicyLavel";
-    }
- }
+class Largesize extends FoodDecorate {
+  getPrice() {
+    return this.FoodmakeFactory.getPrice() + 200;
+  }
+  getInfo() {
+    return this.FoodmakeFactory.getInfo() + " + Large Size";
+  }
+}
 
- export{ExtraCheese,ExtraSource,Largesize,SpicyLavel
- }
+ export{ExtraCheese,ExtraSource,Largesize,SpicyLavel}

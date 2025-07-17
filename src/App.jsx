@@ -7,6 +7,7 @@ import OrderStatesViews from './Layouts/orderStatesview';
 import PaymentComponents from './Layouts/PaymentView';
 import FoodViewCard from './Layouts/Cardview';
 import Login from './Layouts/login';
+import Register from './Layouts/register';
 const App = () => {
   
  return (
@@ -19,6 +20,7 @@ const App = () => {
     <Route path='/PaymentComponents' element={<PaymentComponents />} />
     <Route path='/FoodViewCard' element={<FoodViewCard />} />
     <Route path='/Login' element={<Login />} />
+    <Route path='/Register' element={<Register />} />
   </Routes>
   </BrowserRouter>
   )
