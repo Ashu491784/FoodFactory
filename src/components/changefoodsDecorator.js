@@ -51,9 +51,5 @@ class ExtraCheese extends FoodDecorate{
     }
  }
 
- export{
-     ExtraCheese,
-     ExtraSource,
-     Largesize,
-     SpicyLavel
+ export{ExtraCheese,ExtraSource,Largesize,SpicyLavel
  }
