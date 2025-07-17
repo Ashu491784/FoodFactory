@@ -26,18 +26,23 @@ const PaymentComponents = () => {
         alert(`Payment of Rs:${amount} using ${paymentMethod} is successful`);
     };
     return (
-        <div>
-            <h2>Payment Now</h2>
-            <input type='number' placeholder='Amount here' value={amount} onChange={(e) => setAmount(e.target.value)}>
-            <select value={paymentMethod} onChange={(e) => setPaymentMethod(e.target.value)}> 
-               <option value="">Select Payment Method</option>
-                <option value="cash">Cash</option>
-                <option value="stripe">Stripe</option>
-                <option value="paypal">Paypal</option>
-                <button onClick={handlePayment}>Pay Now</button>
-            </select>
-            <button onClick={handlePayment}>Pay Now</button>
-            </input>
-        </div>
+       <div className='p-6 space-y-4'>
+        <h2 className='text-xl font-semobold'>Payment</h2>
+       <input
+  type="number"
+  value={amount}
+  placeholder="Amount here"
+  onChange={(e) => setAmount(e.target.value)}
+/>
+       <select value={paymentMethod} onChange={(e) => setPaymentMethod(e.target.value)} className='border p-2'>
+        <option value="">Select Method</option>
+        <option value="cash">Cash</option>
+        <option value="paypal">Paypal</option>
+        <option value="stripe">Stripe</option>
+       </select>
+       <button onClick={handlePayment} className='bg-blue-300 text-white px-4 py-2 rounded'>Pay</button>
+       </div>
     )
-}
+};
+
+export default PaymentComponents;

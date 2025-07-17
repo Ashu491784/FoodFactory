@@ -3,6 +3,10 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Dashboard from './Layouts/Dasgboard';
 import FoodOrderItemss from './Layouts/foods';
 import FoodAddViews from './Layouts/Additional';
+import OrderStatesViews from './Layouts/orderStatesview';
+import PaymentComponents from './Layouts/PaymentView';
+import FoodViewCard from './Layouts/Cardview';
+import Login from './Layouts/login';
 const App = () => {
   
  return (
@@ -11,6 +15,10 @@ const App = () => {
     <Route path="/" element={<Dashboard />} />
     <Route path='/foodOrderItemss' element={<FoodOrderItemss />} />
     <Route path='/foodAddViews' element={<FoodAddViews />} />
+    <Route path='/OrderStatesViews' element={<OrderStatesViews />} />
+    <Route path='/PaymentComponents' element={<PaymentComponents />} />
+    <Route path='/FoodViewCard' element={<FoodViewCard />} />
+    <Route path='/Login' element={<Login />} />
   </Routes>
   </BrowserRouter>
   )

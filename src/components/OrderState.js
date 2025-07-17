@@ -7,7 +7,6 @@ class OrderState {
     nextState(){
         return new Error("Next method must be import");
     }
-
     getStatus(){
         throw new Error("getStatus method must be import");
     }
@@ -15,8 +14,12 @@ class OrderState {
 
 //status create
 class ConfirmStatus extends OrderState{
+    constructor(order){
+        super(order);
+        this.order = order;
+    }
     next(){
-        rhis.order.setState(new PreparingState(this.order));
+        this.order.setState(new PreparingState(this.order));
     }
     getStatus(){
         return "Confirm";
@@ -24,6 +27,10 @@ class ConfirmStatus extends OrderState{
 }
 
 class PreparingState extends OrderState{
+    constructor(order){
+        super(order);
+        this.order = order;
+    }
     next(){
         this.order.setState(new ReadyState(this.order));
     }
@@ -33,6 +40,10 @@ class PreparingState extends OrderState{
 }
 
 class ReadyState extends OrderState{
+    constructor(order){
+        super(order);
+        this.order = order;
+    }
     next(){
         this.order.setState(new DeliverState(this.order));
     }
@@ -42,6 +53,10 @@ class ReadyState extends OrderState{
 }
 
 class DeliverState extends OrderState{
+    constructor(order){
+        super(order);
+        this.order = order;
+    }
     next(){
         this.order.setState(new DeliverState(this.order));
     }

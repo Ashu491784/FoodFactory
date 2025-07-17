@@ -1,5 +1,6 @@
 import React from 'react';
 import { FoodmakeFactory, FoodFctory } from '../components/FoodmakeFactory';
+import { Link } from 'react-router-dom';
 
 const foodData = [
   { name: 'Pizza', image: '/public/images/463.jpg', price: 1200 },
@@ -22,7 +23,10 @@ const foodItems = foodData.map(FoodmakeFactory => FoodFctory.createFood(Foodmake
               <div className="p-4">
                 <h2 className="text-xl font-semibold text-gray-800">{prepared.name}</h2>
                 <p className="text-gray-600 text-lg mt-2">Rs. {prepared.price}.00</p>
-                <button className="bg-indigo-500 hover:bg-indigo-600 text-white py-2 px-4 rounded mt-4" >Buy Now</button>
+               <Link to="/FoodViewCard">
+               <button className="bg-indigo-500 hover:bg-indigo-600 text-white py-2 px-4 rounded mt-4" >Buy Now</button>
+               </Link> 
+               
               </div>
             </div>
           );

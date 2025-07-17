@@ -5,14 +5,14 @@ const Dashboard  = () => {
     return ( 
 <div className="flex min-h-screen bg-gradient-to-br from-indigo-50 to-purple-50">
   {/* Sidebar */}
-  <aside className="w-64 h-screen bg-gradient-to-b from-indigo-600 to-purple-600 shadow-xl p-6 hidden md:block animate-[slideInLeft_0.5s_ease-out_forwards]">
+  <aside className="w-64 h-screen bg-gradient-to-b from-blue-600 to-gray-800 shadow-xl p-6 hidden md:block animate-[slideInLeft_0.5s_ease-out_forwards]">
     <h2 className="text-2xl font-bold text-white mb-8 flex items-center gap-2">
       <span className="bg-white text-indigo-600 p-1 rounded-lg">🍔</span>
       <span>K'A FoodCenter</span>
     </h2>
     <ul className="space-y-4">
       <li className="group">
-        <Link to="/foodAddViews">
+        <Link to="/FoodViewCard">
   <button className="flex items-center gap-3 text-indigo-100 hover:text-white px-4 py-3 rounded-lg transition-all duration-300 group-hover:bg-white/10 group-hover:translate-x-2">
     🏠 <span className="font-medium">Dashboard</span>
   </button>
@@ -26,22 +26,29 @@ const Dashboard  = () => {
         </Link>
        
       </li>
+      
       <li className="group">
-        <button  className="flex items-center gap-3 text-indigo-100 hover:text-white px-4 py-3 rounded-lg transition-all duration-300 group-hover:bg-white/10 group-hover:translate-x-2">
+        <Link to="/OrderStatesViews">
+          <button  className="flex items-center gap-3 text-indigo-100 hover:text-white px-4 py-3 rounded-lg transition-all duration-300 group-hover:bg-white/10 group-hover:translate-x-2">
           <span className="font-medium">📞 Contact</span>
         </button>
+        </Link>
+        
       </li>
       <li className="group">
-        <button  className="flex items-center gap-3 text-indigo-100 hover:text-white px-4 py-3 rounded-lg transition-all duration-300 group-hover:bg-white/10 group-hover:translate-x-2">
-          <span className="font-medium">⚙Settings</span>
-        </button>
+        <Link to="/PaymentComponents">
+          <button  className="flex items-center gap-3 text-indigo-100 hover:text-white px-4 py-3 rounded-lg transition-all duration-300 group-hover:bg-white/10 group-hover:translate-x-2">
+          <span className="font-medium">⚙ Settings</span>
+          </button>
+        </Link>
+        
       </li>
     </ul>
   </aside>
 
   {/* Main Content */}
   <div
-  className="min-h-screen w-full bg-cover bg-center p-6"style={{backgroundImage: "url('/images/463.jpg')"}}>
+  className="min-h-screen w-full bg-gradient-to-br from-gray-900 to-black r p-6"style={{backgroundImage: "url('/images/463.jpg')"}}>
 
   <div className="bg-white/70 backdrop-blur-sm rounded-xl p-20">
     <div className="flex justify-between items-center mb-8">
@@ -74,29 +81,29 @@ const Dashboard  = () => {
 
       <div className="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 border-l-4 border-green-500 hover:border-green-600">
         <p className="text-gray-500 mb-1 text-sm font-medium">💰 Revenue</p>
-        <h2 className="text-4xl font-extrabold text-green-600">$32,500</h2>
+        <h2 className="text-4xl font-extrabold text-green-400">$32,500</h2>
         <div className="mt-4 h-2 bg-green-100 rounded-full overflow-hidden">
-          <div className="h-full bg-green-500 rounded-full animate-[progressBar_2s_ease-in-out_forwards]" style={{ width: '65%' }}></div>
+          <div className="h-full bg-green-400 rounded-full animate-[progressBar_2s_ease-in-out_forwards]" style={{ width: '65%' }}></div>
         </div>
       </div>
 
       <div className="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 border-l-4 border-purple-500 hover:border-purple-600">
         <p className="text-gray-500 mb-1 text-sm font-medium">📦 New Orders</p>
-        <h2 className="text-4xl font-extrabold text-purple-600">158</h2>
+        <h2 className="text-4xl font-extrabold text-purple-400">158</h2>
         <div className="mt-4 h-2 bg-purple-100 rounded-full overflow-hidden">
-          <div className="h-full bg-purple-500 rounded-full animate-[progressBar_2s_ease-in-out_forwards]" style={{ width: '85%' }}></div>
+          <div className="h-full bg-purple-400 rounded-full animate-[progressBar_2s_ease-in-out_forwards]" style={{ width: '85%' }}></div>
         </div>
       </div>
     </div>
 
     {/* Food Categories */}
-    <div className="bg-white rounded-2xl shadow-lg p-6 animate-[fadeInUp_1s_ease-out_forwards]">
+    <div className="bg-pink-200 rounded-2xl shadow-lg p-6 animate-[fadeInUp_1s_ease-out_forwards]">
       <h3 className="text-xl font-bold text-gray-800 mb-6">Popular Categories</h3>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {['🍕 Pizza', '🍔 Burgers', '🌭 HoteDog', '🍹 Juice'].map((category, index) => (
           <div 
             key={index}
-            className="p-4 rounded-xl bg-gradient-to-r from-indigo-50 to-purple-50 text-center cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-105 hover:bg-gradient-to-r hover:from-indigo-100 hover:to-purple-100"
+            className="p-4 rounded-xl bg-gradient-to-r from-indigo-50 to-purple-300 text-center cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-105 hover:bg-gradient-to-r hover:from-indigo-100 hover:to-purple-100"
           >
             <span className="text-3xl mb-2 block">{category.split(' ')[0]}</span>
             <span className="font-medium text-gray-700">{category.split(' ')[1]}</span>
