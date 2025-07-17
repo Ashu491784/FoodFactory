@@ -1,5 +1,7 @@
 import {PaymentMethods, StripeAdapter, PaypalAdapter, cashAdapter} from '../components/paymentAdapter';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
+
 
 const PaymentComponents = () => {
     const [amount, setAmount] = useState(0);
@@ -40,7 +42,10 @@ const PaymentComponents = () => {
         <option value="paypal">Paypal</option>
         <option value="stripe">Stripe</option>
        </select>
-       <button onClick={handlePayment} className='bg-blue-300 text-white px-4 py-2 rounded'>Pay</button>
+       <Link to="/">
+       <button onClick={handlePayment} className='bg-blue-300 hover:bg-indigo-600 text-pink-950 px-4 py-2 rounded'>Pay</button>
+       </Link>
+       
        </div>
     )
 };

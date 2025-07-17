@@ -1,8 +1,8 @@
 import { Link, useNavigate } from "react-router-dom";
-// import {BiUser} from "react-icons/bi";
-// import { signInWithEmailAndPassword } from "firebase/auth";
-// import { auth } from "../../firebase";
-// import { AiOutlineUnlock } from 'react-icons/ai';
+import {BiUser} from "react-icons/bi";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../firebase";
+import { AiOutlineUnlock } from 'react-icons/ai';
 import { useState } from "react";
 
 const Login = () => {

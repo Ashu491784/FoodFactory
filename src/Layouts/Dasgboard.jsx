@@ -12,7 +12,7 @@ const Dashboard  = () => {
     </h2>
     <ul className="space-y-4">
       <li className="group">
-        <Link to="/FoodViewCard">
+        <Link to="/">
   <button className="flex items-center gap-3 text-indigo-100 hover:text-white px-4 py-3 rounded-lg transition-all duration-300 group-hover:bg-white/10 group-hover:translate-x-2">
     🏠 <span className="font-medium">Dashboard</span>
   </button>
@@ -30,7 +30,7 @@ const Dashboard  = () => {
       <li className="group">
         <Link to="/OrderStatesViews">
           <button  className="flex items-center gap-3 text-indigo-100 hover:text-white px-4 py-3 rounded-lg transition-all duration-300 group-hover:bg-white/10 group-hover:translate-x-2">
-          <span className="font-medium">📞 Contact</span>
+          <span className="font-medium">📚 States</span>
         </button>
         </Link>
         
@@ -38,7 +38,7 @@ const Dashboard  = () => {
       <li className="group">
         <Link to="/PaymentComponents">
           <button  className="flex items-center gap-3 text-indigo-100 hover:text-white px-4 py-3 rounded-lg transition-all duration-300 group-hover:bg-white/10 group-hover:translate-x-2">
-          <span className="font-medium">⚙ Settings</span>
+          <span className="font-medium">💳 Payment</span>
           </button>
         </Link>
         
@@ -48,13 +48,13 @@ const Dashboard  = () => {
 
   {/* Main Content */}
   <div
-  className="min-h-screen w-full bg-gradient-to-br from-gray-900 to-black r p-6"style={{backgroundImage: "url('/images/463.jpg')"}}>
+  className="min-h-screen w-full bg-gradient-to-br from-gray-900 to-black r p-6"style={{backgroundImage: "url('../../public/images/4567.jpg')"}}>
 
   <div className="bg-white/70 backdrop-blur-sm rounded-xl p-20">
     <div className="flex justify-between items-center mb-8">
       <div className="flex flex-col items-start md:items-center text-center space-y-2">
         <h1 className="text-3xl md:text-4xl font-bold text-gray-800 animate-[pulse_2s_infinite]">
-          Don't Cook Today... <span className="text-indigo-600">🪴</span>
+          Don't Cook Today... <span className="text-indigo-600">👩🏼‍🍳</span>
         </h1>
         <p className="text-gray-500 text-lg">
           Let's Order now and Try new flavour... <span className="text-purple-500 animate-[bounce_2s_infinite]">🍀</span>
@@ -71,7 +71,7 @@ const Dashboard  = () => {
       </div>
     </div>
 
-    {/* Stats Cards */}
+   
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
       <div className="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 border-l-4 border-blue-500 hover:border-blue-600">
         <p className="text-gray-500 mb-1 text-sm font-medium">👥 Total Users</p>

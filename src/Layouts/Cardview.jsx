@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { FoodFactory } from '../components/FoodmakeFactory';
 import cartInstance from '../components/CardSingleton';
 import { ExtraCheese, ExtraSource, SpicyLavel, Largesize } from '../components/changefoodsDecorator';
+import { Link } from 'react-router-dom';
+
+
 
 const FoodViewCard = () => {
   const [cartItems, setCartItems] = useState([]);
@@ -59,7 +62,7 @@ const FoodViewCard = () => {
     <div className="max-w-3xl mx-auto p-6 space-y-6">
       <h1 className="text-3xl font-bold text-center text-gray-800">🍽️ Order Your Food</h1>
 
-      {/* Extras selection */}
+
       <div className="flex gap-4 flex-wrap justify-center">
         <label className="flex items-center gap-1 cursor-pointer select-none">
           <input type="checkbox" onChange={() => toggleExtra('cheese')} checked={selectedExtras.includes('cheese')} />
@@ -79,15 +82,11 @@ const FoodViewCard = () => {
         </label>
       </div>
 
-      {/* Food cards */}
+      
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {foodData.map((item, i) => (
-          <div
-            key={i}
-            onClick={() => handleAdd(item)}
-            className="cursor-pointer bg-white rounded-xl p-4 shadow hover:scale-105 transition transform duration-300"
-            title={`Click to add ${item.getName()} with selected extras`}
-          >
+          <div key={i} onClick={() => handleAdd(item)} className="cursor-pointer bg-white rounded-xl p-4 shadow hover:scale-105 transition transform duration-300"
+            title={`Click to add ${item.getName()} with selected extras`}>
             <div className="text-4xl text-center">{item.getImage()}</div>
             <h3 className="text-lg font-semibold text-center mt-2">{item.getName()}</h3>
             <p className="text-sm text-center text-gray-600">Rs.{item.getPrice()}</p>
@@ -95,7 +94,7 @@ const FoodViewCard = () => {
         ))}
       </div>
 
-      {/* Cart and bill */}
+   
       <div className="bg-white rounded-xl shadow-md p-5">
         <h2 className="text-2xl font-semibold mb-4 text-gray-800">🧾 Your Bill</h2>
 
@@ -115,6 +114,10 @@ const FoodViewCard = () => {
         <div className="text-right font-bold text-xl text-gray-900">
           Total: Rs.{total}
         </div>
+        <Link to="/PaymentComponents">
+        <button className="bg-indigo-500 hover:bg-indigo-600 text-white py-2 px-4 rounded mt-4">Checkout</button>
+        </Link>
+        
       </div>
     </div>
   );
