@@ -54,6 +54,11 @@ class Order {
     constructor(){
         this.setState(new ConfirmStatus(this));
     }
+/**
+ * Sets the current state of the order.
+ * @param {OrderState} state - The new state to transition to.
+ */
+
     setState(state){
         this.state = state;
     }

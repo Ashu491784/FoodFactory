@@ -1,53 +1,54 @@
-class FoodDecorate extends foodmakeFactory{
-    constructor(foodmakeFactory){
+import {FoodmakeFactory} from "./FoodmakeFactory";
+class FoodDecorate extends FoodmakeFactory{
+    constructor(FoodmakeFactory){
         super();
-        this.foodmakeFactory = foodmakeFactory;
+        this.foodmakeFactory = FoodmakeFactory;
     }
 
     getInfo(){
-        return `${this.foodmakeFactory.getInfo()} | ${this.name} | ${this.price}`;
+        return `${this.FoodmakeFactory.getInfo()} | ${this.name} | ${this.price}`;
     }
     prepare(){
-        return this.foodmakeFactory.prepare();
+        return this.FoodmakeFactory.prepare();
     }
 }
 
 class ExtraCheese extends FoodDecorate{
     getInfo(){
-        return this.foodmakeFactory.getInfo() + " +Extracheese"
+        return this.FoodmakeFactory.getInfo() + " +Extracheese"
     }
     prepare(){
-        return this.foodmakeFactory.prepare() + "add to Extracheese";
+        return this.FoodmakeFactory.prepare() + "add to Extracheese";
     }
  }
 
  class ExtraSource extends FoodDecorate{
     getInfo(){
-        return this.foodmakeFactory.getInfo() + " +ExtraSource"
+        return this.FoodmakeFactory.getInfo() + " +ExtraSource"
     }
     prepare(){
-        return this.foodmakeFactory.prepare() + "add to ExtraSouce";
+        return this.FoodmakeFactory.prepare() + "add to ExtraSouce";
     }
  }
 
  class Largesize extends FoodDecorate{
     getInfo(){
-        return this.foodmakeFactory.getInfo().replace(/Rs\.(\d+)/, (match, p1) => {
+        return this.FoodmakeFactory.getInfo().replace(/Rs\.(\d+)/, (match, p1) => {
             const newPrice = parseInt(p1) * 2;
             return `Rs. ${newPrice}`;
         }) + ("Largesize");
     }
     prepare(){
-        return this.foodmakeFactory.prepare() + "add to Largesize";
+        return this.FoodmakeFactory.prepare() + "add to Largesize";
     }
  }
 
  class SpicyLavel extends FoodDecorate{
     getInfo(){
-        return this.foodmakeFactory.getInfo() + " +Spicy"
+        return this.FoodmakeFactory.getInfo() + " +Spicy"
     }
     prepare(){
-        return this.foodmakeFactory.prepare() + "add to SpicyLavel";
+        return this.FoodmakeFactory.prepare() + "add to SpicyLavel";
     }
  }
 

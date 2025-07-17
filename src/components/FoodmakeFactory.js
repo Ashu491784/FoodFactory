@@ -1,36 +1,36 @@
-class foodmakeFactory {
+class FoodmakeFactory {
     constructor(name, image, price) {
         this.name = name;
         this.image = image;
         this.price = price;
     }
     prepare(){
-        return new foodmake(this.name, this.image, this.price);
+        return new FoodmakeFactory(this.name, this.image, this.price);
     }
     getInfo(){
         return new foodmakeInfo(this.name, this.image, this.price);
     }
 }
 
-class Pizza extends foodmakeFactory {
+class Pizza extends FoodmakeFactory {
     constructor(name, image, price) {
         super(name, image, price);
     }
 }
 
-class Burger extends foodmakeFactory {
+class Burger extends FoodmakeFactory {
     constructor(name, image, price) {
         super(name, image, price);
     }
 }
 
-class Hotdog extends foodmakeFactory {
+class Hotdog extends FoodmakeFactory {
     constructor(name, image, price) {
         super(name, image, price);
     }
 }
 
-class juice extends foodmakeFactory {
+class juice extends FoodmakeFactory {
     constructor(name, image, price) {
         super(name, image, price);
     }
@@ -52,4 +52,4 @@ class FoodFctory {
     }
 }
 
-export {FoodFctory, foodmakeFactory, Pizza, Burger, Hotdog, juice};
+export {FoodFctory, FoodmakeFactory, Pizza, Burger, Hotdog, juice};
